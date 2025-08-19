@@ -77,6 +77,24 @@ add_action( 'after_setup_theme', 'solub_setup' );
  * Add a sidebar.
  */
 function solub_widget_init() {
+
+
+
+register_sidebar( array(
+		'name'          => __( 'Blog sidebar', 'solub' ),
+		'id'            => 'blog-sidebar',
+		'description'   => __( 'Widgets in this area will be shown on blog sidebar.', 'solub' ),
+		'before_widget' => '<div id="%1$s" class="tp-sidebar-widget mb-45 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-sidebar-widget-title">',
+		'after_title'   => '</h3>',
+	) );
+
+
+
+
+
+
 	register_sidebar( array(
 		'name'          => __( 'Footer Widget 01', 'solub' ),
 		'id'            => 'footer-widget-1',
@@ -128,7 +146,7 @@ function solub_theme_scripts() {
 	
 
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css', array(),  '5.2.3', 'all' );
-    wp_enqueue_style( 'swiper-bundle', get_template_directory_uri() . '/assets/css/swiper-bundle.css', array(),  '8.2.2', 'all' );
+    wp_enqueue_style( 'swiper-bundle', get_template_directory_uri() . './assets/css/swiper-bundle.css', array(),  '8.2.2', 'all' );
     wp_enqueue_style( 'magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css', array(),  '1.0.0', 'all' );
     wp_enqueue_style( 'font-awesome-pro', get_template_directory_uri() . '/assets/css/font-awesome-pro.css', array(),  '6.0.0', 'all' );
     wp_enqueue_style( 'spacing', get_template_directory_uri() . '/assets/css/spacing.css', array(),  '1.0.0', 'all' );
@@ -136,17 +154,16 @@ function solub_theme_scripts() {
 	wp_enqueue_style( 'nice-select', get_template_directory_uri() . '/assets/css/nice-select.css', array(),  '1.0.0', 'all' );
 	wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/css/slick.css', array(),  '1.0.0', 'all' );
     wp_enqueue_style( 'solub-main', get_template_directory_uri() . '/assets/css/main.css', array(),  '1.0.0', 'all' );
-
     wp_enqueue_style( 'style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/js/bootstrap-bundle.js', array( 'jquery' ), '5.1.3', true );
-	wp_enqueue_script( 'wow', get_template_directory_uri() . '/assets/js/wow.js', array( '' ), '1.1.3', true );
-	wp_enqueue_script( 'swiper-bundle', get_template_directory_uri() . '/assets/js/swiper-bundle.js', array( '' ), '5.1.3', true );
-	wp_enqueue_script( 'magnific-popup', get_template_directory_uri() . '/assets/js/magnific-popup.js', array( '' ), '5.1.3', true );
-	wp_enqueue_script( 'purecounter', get_template_directory_uri() . '/assets/js/purecounter.js', array( '' ), '5.1.3', true );
-	wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/assets/js/waypoints.js', array( '' ), '5.1.3', true );
-	wp_enqueue_script( 'isotope-pkgd', get_template_directory_uri() . '/assets/js/isotope-pkgd.js', array( 'imagesloaded' ), '5.1.3', true );
-	wp_enqueue_script( 'solub-main', get_template_directory_uri() . '/assets/js/main.js', array( 'jquery' ), '5.1.3', true );
+    wp_enqueue_script( 'wow', get_template_directory_uri() . '/assets/js/wow.js', array(), '1.1.3', true );
+   wp_enqueue_script( 'swiper-bundle', get_template_directory_uri() . '/assets/js/swiper-bundle.js', array(), '8.2.2', true );
+   wp_enqueue_script( 'magnific-popup', get_template_directory_uri() . '/assets/js/magnific-popup.js', array(), '5.1.3', true );
+   wp_enqueue_script( 'purecounter', get_template_directory_uri() . '/assets/js/purecounter.js', array(), '5.1.3', true );
+   wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/assets/js/waypoints.js', array(), '5.1.3', true );
+   wp_enqueue_script( 'isotope-pkgd', get_template_directory_uri() . '/assets/js/isotope-pkgd.js', array( 'imagesloaded' ), '5.1.3', true );
+   wp_enqueue_script( 'solub-main', get_template_directory_uri() . '/assets/js/main.js', array( 'jquery' ), '5.1.3', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -158,6 +175,7 @@ include_once('inc/breadcrumb.php');
 include_once('inc/templet-function.php');
 include_once('inc/nav-walker.php');
 include_once('inc/solub-contact-info.php');
+include_once('inc/solub-recent-post.php');
 
 
 

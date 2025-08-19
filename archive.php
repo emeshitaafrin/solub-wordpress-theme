@@ -8,7 +8,7 @@
          <!-- postbox area start -->
          <section class="tp-postbox-ptb p-relative pt-130 pb-120">
             <div class="container">
-               <div class="row">
+               <div class="row justyfy-content-center">
                   <div class="col-lg-8">
                      <div class="tp-postbox-wrapper">
                         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
@@ -26,12 +26,7 @@
 
                      </div>
                   </div>
-                  <div class="col-lg-4">
-
-                    <?php get_sidebar();?>
-
-
-                     </div>
+                 
                   </div>
                </div>
             </div>

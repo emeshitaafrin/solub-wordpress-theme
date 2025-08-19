@@ -18,11 +18,15 @@
                         <?php endwhile; else : ?>
 	                       <p><?php esc_html__( 'Sorry, no posts matched your criteria.','solub' ); ?></p>
                         <?php endif; ?>
-                      
+                         <?php get_template_part('template-parts/biography');?>
 
-                        <div class="tp-pagination pt-30">
-                           <?php solub_pagination(); ?>
-                        </div>
+                      <?php if ( comments_open() || get_comments_number() ) {
+                        comments_template();
+
+                        
+                            }
+                              ?>
+
 
                      </div>
                   </div>

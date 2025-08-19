@@ -112,6 +112,73 @@ wp_nav_menu( array(
 
 }
 
+  
+// exdos_navigation
+function solub_pagination() {
+    $pages = paginate_links( array(
+        'type'      => 'array',
+        'prev_text' => __('<i class="fal fa-long-arrow-left"></i>', 'harry'),
+        'next_text' => __('<i class="fal fa-long-arrow-right"></i>', 'harry'),
+    ) );
+
+    if ( $pages ) {
+        echo '<nav><ul>';
+        foreach ( $pages as $page ) {
+            echo "<li>$page</li>";
+        }
+        echo '</ul></nav>';
+    }
+}
+
+
+
+// exdos_tags
+function solub_tags(){
+    $post_tags = get_the_tags();
+    
+    if ($post_tags) {
+        foreach ($post_tags as $tag) {
+            ?>
+            <a href="<?php echo get_tag_link($tag); ?>">
+                <?php echo esc_html($tag->name); ?>
+            </a>
+            <?php
+        }
+    } else {
+        ?>
+        <i><?php echo esc_html__('solub_tags', 'solub'); ?></i>
+        <?php
+    }
+}
+
+
+
+
+/**
+ * Generate custom search form
+ *
+ * @param string $form Form HTML.
+ * @return string Modified form HTML.
+ */
+function solub_blog_search_form( $form ) {
+	$form = '
+    
+        <div class="tp-sidebar-search">
+       <form action="' . home_url( '/' ) . '" method="get">
+           <div class="tp-sidebar-search-input p-relative">
+         <input type="text" value="' . get_search_query() . '" name="s"  placeholder="' .esc_attr( 'Enter your keywords...' ) . '">
+        <button class="tp-sidebar-search-btn" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+         <path d="M9.55005 18.1001C14.2721 18.1001 18.1001 14.2721 18.1001 9.55005C18.1001 4.82799 14.2721 1 9.55005 1C4.82799 1 1 4.82799 1 9.55005C1 14.2721 4.82799 18.1001 9.55005 18.1001Z" stroke="#1F2220" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+         <path d="M18.9992 19L17.1992 17.2" stroke="#1F2220" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+         </svg></button>
+            </div>
+         </form>
+         </div>';
+
+	return $form;
+}
+add_filter( 'get_search_form', 'solub_blog_search_form' );
+   
 
 
 /**

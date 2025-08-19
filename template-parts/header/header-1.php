@@ -13,11 +13,6 @@
 ?>
 
 
-<!-- <h1 class="demo"><?php echo esc_html__('this is text ','solub');?> </h1>
-<input type="text" placeholder="<?php echo esc_attr__('Your Name','solub');?> ">
-<a href="<?php echo esc_url($url); ?>"> <?php echo esc_html('Your Button','Solub'); ?></a>
-<p><?php echo esc_html($demo); ?> </p> -->
-
 
 
 
@@ -72,9 +67,9 @@
                         <?php if( $solub_header_right_switch== 'on'):?>
                         <div class="tp-header-2-right-search d-none d-lg-flex align-items-center">
                            <div id="tp-header-search" class="p-relative">
-                              <form action="#">
+                              <form action="/" method="get">
                                  <div class="tp-header-search-input">
-                                    <input type="text" placeholder="Search...">
+                                    <input type="text"  name="s"  value="<?php get_search_query();?> " placeholder="Search...">
                                  </div>
                                  <div class="tp-header-search-icon">
                                     <span>
